@@ -30,12 +30,4 @@ https
 
 http
 
-ftp
-
-sftp
-
-scp 
-
-tftp
-
-note: most downloads are done via https or http
+note: most downloads are done via https
