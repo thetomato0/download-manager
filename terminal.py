@@ -22,7 +22,7 @@ class mainterminal:
 
 	def download(self,url,protocol):
 		try:
-			if protocol not in ('http', 'https', 'ftp', 'sftp', 'scp', 'tftp'):
+			if protocol not in ('http', 'https'):
 				raise ValueError('Invalid protocol specified.')
 
 			self.r = requests.get(f"{protocol}://" + url, stream=True)
