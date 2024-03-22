@@ -12,16 +12,18 @@ this project is still unfinished and doesnt have a name
   -help 
 ```
 
-Go to the project directory
 
 ```bash
   -show
 ```
 
-Install dependencies
 
 ```bash
   -download <url> <protocol>
+```
+
+```bash
+  -exit
 ```
 
 # download protocols
