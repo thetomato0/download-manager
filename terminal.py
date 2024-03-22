@@ -9,9 +9,9 @@ class mainterminal:
 		pass
 
 	def helpc(self,*args):
-			print("-help -download <url> <prtocol> -show")
+			print("-help -download <url> <prtocol> -show -exit")
 
-	def show(self,*args):
+	def showc(self,*args):
 		if len(os.listdir(os.getcwd() + "/download")) == 0:
 				print("no download was found")
 		else:
@@ -20,7 +20,7 @@ class mainterminal:
 		
 			
 
-	def download(self,url,protocol):
+	def downloadc(self,url,protocol):
 		try:
 			if protocol not in ('http', 'https'):
 				raise ValueError('Invalid protocol specified.')
@@ -43,8 +43,8 @@ class mainterminal:
 	def loop(self):
 		self.commands = {
     	"help": self.helpc,
-    	"download": self.download,
-    	"show": self.show
+    	"download": self.downloadc,
+    	"show": self.showc,
 		}
 		while True:
 			self.user_input = input(": ")
@@ -52,9 +52,7 @@ class mainterminal:
  
 			self.parts = self.user_input.split()
 			self.command = self.parts[0]
-			if not self.user_input == 'help' or self.user_input == 'show':
-				self.args1 = self.parts[1:]
-				self.args2 = self.parts[2:]
+			
 
 			if self.command == "exit":
 				break
@@ -63,10 +61,13 @@ class mainterminal:
 			if self.command not in self.commands:
 				print("Invalid command")
 				continue
+
 			try:
-				if  self.user_input == 'help' or self.user_input == 'show':
-					self.commands[self.command]()
-				else:
+				if  self.command == 'download':
+					self.args1 = self.parts[1:]
+					self.args2 = self.parts[2:]
 					self.commands[self.command](self.args1[0],self.args2[0])
+				else:
+					self.commands[self.command]()
 			except IndexError:
-				print(f"alot or not enough arguments were given for {self.command}")
+				print("not enough arguments were given")
