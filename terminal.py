@@ -1,4 +1,3 @@
-
 import os
 import requests
 from tqdm import tqdm
@@ -60,8 +59,10 @@ class mainterminal:
 			if self.command not in self.commands:
 				print("Invalid command")
 				continue
-
-			if  self.user_input == 'help' or self.user_input == 'show':
-				self.commands[self.command]()
-			else:
-				self.commands[self.command](self.args1[0],self.args2[0])
+			try:
+				if  self.user_input == 'help' or self.user_input == 'show':
+					self.commands[self.command]()
+				else:
+					self.commands[self.command](self.args1[0],self.args2[0])
+			except IndexError:
+				print(f"not enough arguments were given for {self.command}")
