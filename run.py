@@ -3,7 +3,7 @@ from terminal import mainterminal
 
 class Main:
     def __init__(self):
-        print('Welcome!')
+        print('Welcome to download manager !')
         self.terminal = mainterminal()
         self.path = os.getcwd()
         self.prompt = ""
