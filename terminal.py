@@ -1,3 +1,4 @@
+
 import os
 import requests
 from tqdm import tqdm
@@ -20,19 +21,22 @@ class mainterminal:
 			
 
 	def download(self,url,protocol):
-		if protocol not in ('http', 'https', 'ftp', 'sftp', 'scp', 'tftp'):
-			raise ValueError('Invalid protocol specified.')
+		try:
+			if protocol not in ('http', 'https', 'ftp', 'sftp', 'scp', 'tftp'):
+				raise ValueError('Invalid protocol specified.')
 
-		self.r = requests.get(f"{protocol}://" + url, stream=True)
-		self.path = os.getcwd() + "/download" + "/file.jpg"
-		with open(self.path, 'wb') as f:
-			self.total_length = int(self.r.headers.get('content-length'))
-			for chunk in progress.bar(self.r.iter_content(chunk_size=1024), expected_size=(self.total_length/1024) + 1): 
-					if chunk:
-						f.write(chunk)
-						f.flush()
+			self.r = requests.get(f"{protocol}://" + url, stream=True)
+			self.path = os.getcwd() + "/download" + "/file.jpg"
+			with open(self.path, 'wb') as f:
+				self.total_length = int(self.r.headers.get('content-length'))
+				for chunk in progress.bar(self.r.iter_content(chunk_size=1024), expected_size=(self.total_length/1024) + 1): 
+						if chunk:
+							f.write(chunk)
+							f.flush()
 
-		print('download finished successfully')
+			print('download finished successfully')
+		except:
+			print("download failed")
 
 
 
