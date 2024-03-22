@@ -37,3 +37,5 @@ sftp
 scp 
 
 tftp
+
+note: most downloads are done via https or http
