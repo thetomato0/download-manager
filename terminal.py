@@ -69,4 +69,4 @@ class mainterminal:
 				else:
 					self.commands[self.command](self.args1[0],self.args2[0])
 			except IndexError:
-				print(f"not enough arguments were given for {self.command}")
+				print(f"alot or not enough arguments were given for {self.command}")
